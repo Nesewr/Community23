@@ -99,6 +99,21 @@ def show_main_page():
 #  갤러리 페이지
 #############################
 def show_gallery_page():
+    # CSS 오버라이드 적용
+    st.markdown("""
+    <style>
+    /* 컬럼 컨테이너의 wrap 방지 및 가로 스크롤 허용 */
+    .css-1l269bu > div {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+    }
+    /* 컬럼 간 마진 조정 (원하는 대로 수정 가능) */
+    .css-1l269bu .css-1kyxreq {
+        margin-right: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     gallery_id = st.session_state.get("current_gallery_id", None)
     if not gallery_id:
         st.error("갤러리 ID가 없습니다.")
@@ -226,6 +241,20 @@ def show_gallery_page():
 #  게시글 상세 페이지
 #############################
 def show_post_detail_page():
+    # CSS 오버라이드 적용
+    st.markdown("""
+    <style>
+    /* 컬럼 wrap 방지 및 가로 스크롤 허용 */
+    .css-1l269bu > div {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+    }
+    .css-1l269bu .css-1kyxreq {
+        margin-right: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
     post_id = st.session_state.get("current_post_id", None)
     if not post_id:
         st.error("게시글 ID가 없습니다.")
